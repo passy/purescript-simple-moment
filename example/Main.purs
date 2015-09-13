@@ -8,10 +8,13 @@ import Data.Date
 import Data.Time
 import Data.Maybe
 
-import Data.Moment.Simple
+import qualified Data.Moment.Simple as M
+import qualified Data.Moment.Simple.Relative as M
 
 main = do
   tNow <- now
-  nowCal <- calendar $ fromDate tNow
+  nowCal <- M.calendar $ M.fromDate tNow
   print nowCal -- "Today at 9:47 PM"
-  -- let tThen = fromStringStrict "2015-09-13T20:56:22.001Z"
+
+  nowStr <- M.fromNow $ M.fromDate tNow
+  print nowStr -- "a few seconds ago"

@@ -8,12 +8,12 @@ module Data.Moment.Simple
 
 import Prelude
 
+import Control.Monad.Eff (Eff())
 import Control.MonadPlus (guard)
 import Data.Date (toJSDate, Date(), Now())
 import Data.Date.Locale (Locale())
-import Data.Time (Milliseconds(..))
 import Data.Maybe (Maybe())
-import Control.Monad.Eff (Eff())
+import Data.Time (Milliseconds(..))
 
 import Data.Moment.Simple.Internal (isValid)
 import Data.Moment.Simple.Types (Moment())
