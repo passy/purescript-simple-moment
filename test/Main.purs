@@ -2,11 +2,13 @@ module Test.Main where
 
 import Prelude
 import Test.Unit
+import Debug.Trace
 
 import Global (infinity)
 import Data.Date (now)
 import Data.String (contains)
 import Data.Maybe (isJust, isNothing)
+import Data.Maybe.Unsafe (fromJust)
 import Data.Time (Milliseconds(..))
 import Control.Monad.Eff.Unsafe (unsafeInterleaveEff)
 import qualified Data.Moment.Simple as M
@@ -34,3 +36,12 @@ main = do
       assertFn "fromNow' doesn't contain ago" $ \done -> do
         timeStr <- unsafeInterleaveEff $ M.fromNow' $ M.fromDate now'
         done $ not $ "ago" `contains` timeStr
+
+    test "format" $ do
+      assert "ISO-8601" $ do
+        let d = fromJust $ M.fromEpoch $ Milliseconds 0.0
+        M.formatISO8601 d == "1970-01-01T01:00:00+01:00"
+
+      assert "custom format" $ do
+        let d = fromJust $ M.fromEpoch $ Milliseconds 0.0
+        M.format d "dddd, MMMM Do YYYY, h:mm:ss a" == "Thursday, January 1st 1970, 1:00:00 am"

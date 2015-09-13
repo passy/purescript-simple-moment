@@ -4,6 +4,8 @@ module Data.Moment.Simple
   , fromEpoch
   , calendar
   , module Data.Moment.Simple.Types
+  , format
+  , formatISO8601
   ) where
 
 import Prelude
@@ -12,6 +14,7 @@ import Control.Monad.Eff (Eff())
 import Control.MonadPlus (guard)
 import Data.Date (toJSDate, Date(), Now())
 import Data.Date.Locale (Locale())
+import Data.Function (Fn2(), runFn2)
 import Data.Maybe (Maybe())
 import Data.Time (Milliseconds(..))
 
@@ -33,3 +36,11 @@ fromEpoch (Milliseconds i) = do
   let m = fromEpoch_ i
   guard $ isValid m
   return m
+
+-- | Format according to ISO-8601
+foreign import formatISO8601 :: Moment -> String
+
+foreign import format_ :: Fn2 Moment String String
+
+format :: Moment -> String -> String
+format = runFn2 format_

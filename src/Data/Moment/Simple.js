@@ -18,3 +18,11 @@ exports.calendar = function (a) {
 exports.fromEpoch_ = function (a) {
   return moment(a);
 };
+
+exports.formatISO8601 = function (m) {
+  return m.format();
+};
+
+exports.format_ = function (m, s) {
+  return m.format(s);
+};
