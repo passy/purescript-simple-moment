@@ -40,8 +40,8 @@ main = do
     test "format" $ do
       assert "ISO-8601" $ do
         let d = fromJust $ M.fromEpoch $ Milliseconds 0.0
-        M.formatISO8601 d == "1970-01-01T01:00:00+01:00"
+        M.formatUTCISO8601 d == "1970-01-01T00:00:00+00:00"
 
       assert "custom format" $ do
         let d = fromJust $ M.fromEpoch $ Milliseconds 0.0
-        M.format d "dddd, MMMM Do YYYY, h:mm:ss a" == "Thursday, January 1st 1970, 1:00:00 am"
+        M.formatUTC d "dddd, MMMM Do YYYY, h:mm:ss a" == "Thursday, January 1st 1970, 12:00:00 am"

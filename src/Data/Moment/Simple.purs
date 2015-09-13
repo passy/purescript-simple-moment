@@ -4,8 +4,8 @@ module Data.Moment.Simple
   , fromEpoch
   , calendar
   , module Data.Moment.Simple.Types
-  , format
-  , formatISO8601
+  , formatUTC
+  , formatUTCISO8601
   ) where
 
 import Prelude
@@ -18,7 +18,7 @@ import Data.Function (Fn2(), runFn2)
 import Data.Maybe (Maybe())
 import Data.Time (Milliseconds(..))
 
-import Data.Moment.Simple.Internal (isValid)
+import Data.Moment.Simple.Internal (isValid, clone)
 import Data.Moment.Simple.Types (Moment())
 
 -- | Life a valid date into a Moment object.
@@ -37,10 +37,18 @@ fromEpoch (Milliseconds i) = do
   guard $ isValid m
   return m
 
--- | Format according to ISO-8601
-foreign import formatISO8601 :: Moment -> String
+foreign import formatISO8601_ :: Moment -> String
 
+foreign import setUTC_ :: Moment -> Moment
 foreign import format_ :: Fn2 Moment String String
 
-format :: Moment -> String -> String
-format = runFn2 format_
+setUTC :: Moment -> Moment
+setUTC = clone >>> setUTC_
+
+-- | Format with the given string, ignoring the locale timezone.
+formatUTC :: Moment -> String -> String
+formatUTC = setUTC >>> runFn2 format_
+
+-- | Format according to ISO-8601, ignoring the locale timezone.
+formatUTCISO8601 :: Moment -> String
+formatUTCISO8601 = setUTC >>> formatISO8601_
