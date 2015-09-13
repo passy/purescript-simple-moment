@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "postinstall": "pulp dep install",
+    "test": "pulp test && rimraf docs && pulp docs"
+  },
+  "license": "Apache-2",
+  "devDependencies": {
+    "moment": "^2.10.6",
+    "pulp": "^4.0.2",
+    "rimraf": "^2.4.1"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "purescript-simple-moment",
+  "version": "0.1.0",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "keywords": [
+    "purescript",
+    "date",
+    "datetime",
+    "moment"
+  ],
+  "authors": [
+    "Pascal Hartig <phartig@rdrei.net>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/passy/purescript-simple-moment.git"
+  },
+  "license": "Apache-2",
+  "dependencies": {
+    "moment": "~2.10.6",
+    "purescript-control": "~0.3.0",
+    "purescript-datetime": "~0.9.0",
+    "purescript-eff": "~0.1.1",
+    "purescript-maybe": "~0.3.4",
+    "purescript-prelude": "~0.1.2"
+  },
+  "devDependencies": {
+    "purescript-console": "~0.1.1",
+    "purescript-globals": "~0.2.1",
+    "purescript-test-unit": "passy/purescript-test-unit#ee3450eb9aeaa15752c22a9cc0ff558214e557b6"
+  }
+}
