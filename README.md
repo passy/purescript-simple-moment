@@ -5,7 +5,7 @@
 
 > A minimal wrapper around [moment.js](http://momentjs.com/).
 
-- [Module documentation](docs/Data/Moment/Util.md)
+- [Module documentation](docs/Data/Moment/Simple.md)
 
 ## Motivation
 

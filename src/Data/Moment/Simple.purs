@@ -27,7 +27,7 @@ foreign import calendar :: forall eff. Moment -> Eff (now :: Now, locale :: Loca
 foreign import fromEpoch_ :: Number -> Moment
 
 -- | Construct a Moment object from the milliseconds since
---   1970-01-01 00:00:00.000. If the timestamp is invalid, Nothing is returned.
+-- | 1970-01-01 00:00:00.000. If the timestamp is invalid, Nothing is returned.
 fromEpoch :: Milliseconds -> Maybe Moment
 fromEpoch (Milliseconds i) = do
   let m = fromEpoch_ i
