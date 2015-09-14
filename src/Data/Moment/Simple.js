@@ -23,7 +23,7 @@ exports.formatISO8601_ = function (m) {
   return m.format();
 };
 
-exports.format_ = function (m, s) {
+exports.format_ = function (s, m) {
   return m.format(s);
 };
 

@@ -18,3 +18,6 @@ main = do
 
   nowStr <- M.fromNow $ M.fromDate tNow
   print nowStr -- "a few seconds ago"
+
+  let tThen = M.fromDate <$> fromStringStrict "2015-09-09T10:20:00.001Z"
+  maybe (pure "<invalid>") (M.format "ddd, hA") tThen >>= print -- "Wed, 12PM"

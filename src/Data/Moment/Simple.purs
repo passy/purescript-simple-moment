@@ -4,7 +4,9 @@ module Data.Moment.Simple
   , fromEpoch
   , calendar
   , module Data.Moment.Simple.Types
+  , format
   , formatUTC
+  , formatISO8601
   , formatUTCISO8601
   ) where
 
@@ -21,7 +23,7 @@ import Data.Time (Milliseconds(..))
 import Data.Moment.Simple.Internal (isValid, clone)
 import Data.Moment.Simple.Types (Moment())
 
--- | Life a valid date into a Moment object.
+-- | Lift a valid date into a Moment object.
 foreign import fromDate :: Date -> Moment
 
 -- | Turn a Moment date into a human-readable string, e.g. "Today, 9:30pm"
@@ -40,14 +42,22 @@ fromEpoch (Milliseconds i) = do
 foreign import formatISO8601_ :: Moment -> String
 
 foreign import setUTC_ :: Moment -> Moment
-foreign import format_ :: Fn2 Moment String String
+foreign import format_ :: Fn2 String Moment String
 
 setUTC :: Moment -> Moment
 setUTC = clone >>> setUTC_
 
+-- | Format with the given string, respecting the user's locale.
+format :: forall eff. String -> Moment -> Eff (locale :: Locale | eff) String
+format = (pure <<<) <<< runFn2 format_
+
+-- | Format according to ISO-8601, respecting the user's locale.
+formatISO8601 :: forall eff. Moment -> Eff (locale :: Locale | eff) String
+formatISO8601 = return <<< formatISO8601_
+
 -- | Format with the given string, ignoring the locale timezone.
-formatUTC :: Moment -> String -> String
-formatUTC = setUTC >>> runFn2 format_
+formatUTC :: String -> Moment -> String
+formatUTC s m = runFn2 format_ s $ setUTC m
 
 -- | Format according to ISO-8601, ignoring the locale timezone.
 formatUTCISO8601 :: Moment -> String

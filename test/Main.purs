@@ -44,4 +44,4 @@ main = do
 
       assert "custom format" $ do
         let d = fromJust $ M.fromEpoch $ Milliseconds 0.0
-        M.formatUTC d "dddd, MMMM Do YYYY, h:mm:ss a" == "Thursday, January 1st 1970, 12:00:00 am"
+        M.formatUTC "dddd, MMMM Do YYYY, h:mm:ss a" d == "Thursday, January 1st 1970, 12:00:00 am"
