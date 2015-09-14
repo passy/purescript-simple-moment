@@ -3,9 +3,28 @@
 [![Latest release](http://img.shields.io/bower/v/purescript-simple-moment.svg)](https://github.com/passy/purescript-simple-moment/releases)
 [![Build Status](https://travis-ci.org/passy/purescript-simple-moment.svg?branch=master)](https://travis-ci.org/passy/purescript-simple-moment)
 
-> A minimal wrapper around [moment.js](http://momentjs.com/).
+> A minimal wrapper around a few hand-picked APIs of [moment.js](http://momentjs.com/).
 
-- [Module documentation](docs/Data/Moment/Simple.md)
+For a more fully-featured library, check out
+[purescript-moment](https://github.com/CapillarySoftware/purescript-moment).
+
+## Example
+
+```purs
+tNow <- now
+nowCal <- M.calendar $ M.fromDate tNow
+print nowCal -- "Today at 9:47 PM"
+
+nowStr <- M.fromNow $ M.fromDate tNow
+print nowStr -- "a few seconds ago"
+```
+
+## Documentation
+
+- [Data.Momemt.Simple](docs/Data/Moment/Simple.md)
+- [Data.Moment.Simple.Relative](docs/Data/Moment/Simple/Relative.md)
+- [Data.Moment.Simple.Types](docs/Data/Moment/Simple/Types.md)
+- [Example](example/Main.purs)
 
 ## Motivation
 
