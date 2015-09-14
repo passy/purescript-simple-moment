@@ -8,7 +8,7 @@ A simple PureScript wrapper around moment.js
 fromDate :: Date -> Moment
 ```
 
-Life a valid date into a Moment object.
+Lift a valid date into a Moment object.
 
 #### `calendar`
 
@@ -26,5 +26,37 @@ fromEpoch :: Milliseconds -> Maybe Moment
 
 Construct a Moment object from the milliseconds since
 1970-01-01 00:00:00.000. If the timestamp is invalid, Nothing is returned.
+
+#### `format`
+
+``` purescript
+format :: forall eff. String -> Moment -> Eff (locale :: Locale | eff) String
+```
+
+Format with the given string, respecting the user's locale.
+
+#### `formatISO8601`
+
+``` purescript
+formatISO8601 :: forall eff. Moment -> Eff (locale :: Locale | eff) String
+```
+
+Format according to ISO-8601, respecting the user's locale.
+
+#### `formatUTC`
+
+``` purescript
+formatUTC :: String -> Moment -> String
+```
+
+Format with the given string, ignoring the locale timezone.
+
+#### `formatUTCISO8601`
+
+``` purescript
+formatUTCISO8601 :: Moment -> String
+```
+
+Format according to ISO-8601, ignoring the locale timezone.
 
 
