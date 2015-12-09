@@ -2,19 +2,23 @@ module Test.Main where
 
 import Prelude
 import Test.Unit
-import Debug.Trace
+import Test.Unit.Console (TestOutput())
 
 import Global (infinity)
-import Data.Date (now)
+import Data.Date (Now(), now)
 import Data.String (contains)
 import Data.Maybe (isJust, isNothing)
 import Data.Maybe.Unsafe (fromJust)
 import Data.Time (Milliseconds(..))
+import Control.Monad.Eff (Eff())
 import Control.Monad.Eff.Unsafe (unsafeInterleaveEff)
 import qualified Data.Moment.Simple as M
 import qualified Data.Moment.Simple.Relative as M
 import qualified Data.Moment.Simple.Internal as M
 
+main :: forall eff. Eff ( testOutput :: TestOutput
+                        , now :: Now
+                        | eff ) Unit
 main = do
   now' <- now
   runTest $ do
