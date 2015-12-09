@@ -14,7 +14,7 @@ import Prelude
 
 import Control.Monad.Eff (Eff())
 import Control.MonadPlus (guard)
-import Data.Date (toJSDate, Date(), Now())
+import Data.Date (Date(), Now())
 import Data.Date.Locale (Locale())
 import Data.Function (Fn2(), runFn2)
 import Data.Maybe (Maybe())
