@@ -6,6 +6,8 @@ env:
   - PATH=$HOME/purescript:$PATH
 install:
   - npm install
+  - npm install -g bower
+  - bower install
 script:
   - npm test
 after_success:
