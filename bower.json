@@ -1,6 +1,5 @@
 {
   "name": "purescript-simple-moment",
-  "version": "0.2.1",
   "moduleType": [
     "node"
   ],
@@ -23,7 +22,7 @@
     "type": "git",
     "url": "git://github.com/passy/purescript-simple-moment.git"
   },
-  "license": "Apache-2",
+  "license": "Apache-2.0",
   "dependencies": {
     "moment": "~2.10.6",
     "purescript-control": "~0.3.0",
