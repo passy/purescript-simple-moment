@@ -8,14 +8,13 @@ import Test.Unit.Console (TESTOUTPUT)
 import Test.Unit.Main (runTest)
 
 import Global (infinity)
-import Data.Date (Now(), now)
-import Data.Date.Locale (Locale())
+import Data.Date (Now, now)
+import Data.Date.Locale (Locale)
 import Data.String (contains)
 import Data.Maybe (isJust, isNothing)
 import Data.Maybe.Unsafe (fromJust)
-import Data.Time (Milliseconds(..))
-import Control.Monad.Eff
-import Control.Monad.Eff.Unsafe (unsafeInterleaveEff)
+import Data.Time (Milliseconds(Milliseconds))
+import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Class (liftEff)
 
 import Data.Moment.Simple as M
