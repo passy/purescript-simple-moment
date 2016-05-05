@@ -9,11 +9,12 @@ import Test.Unit.Main (runTest)
 
 import Global (infinity)
 import Data.Date (Now(), now)
+import Data.Date.Locale (Locale())
 import Data.String (contains)
 import Data.Maybe (isJust, isNothing)
 import Data.Maybe.Unsafe (fromJust)
 import Data.Time (Milliseconds(..))
-import Control.Monad.Eff (Eff())
+import Control.Monad.Eff
 import Control.Monad.Eff.Unsafe (unsafeInterleaveEff)
 import Control.Monad.Eff.Class (liftEff)
 
@@ -22,10 +23,10 @@ import Data.Moment.Simple.Relative as MR
 import Data.Moment.Simple.Internal as MI
 
 main :: forall eff. Eff ( now :: Now
-                        , timer :: TIMER
-                        , avar :: AVAR
+                        , locale :: Locale
                         , console :: CONSOLE
-                        , testOutput :: TESTOUTPUT | eff ) Unit
+                        , testOutput :: TESTOUTPUT
+                        | eff ) Unit
 main = do
   now' <- now
   runTest $ do
