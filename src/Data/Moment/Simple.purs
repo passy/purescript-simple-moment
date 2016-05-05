@@ -15,7 +15,7 @@ import Prelude
 import Control.Monad.Eff (Eff())
 import Control.MonadPlus (guard)
 import Data.Date (Date(), Now())
-import Data.Date.Locale (Locale())
+import Data.Date.Locale (Locale)
 import Data.Function (Fn2(), runFn2)
 import Data.Maybe (Maybe())
 import Data.Time (Milliseconds(..))
@@ -49,7 +49,7 @@ setUTC = clone >>> setUTC_
 
 -- | Format with the given string, respecting the user's locale.
 format :: forall eff. String -> Moment -> Eff (locale :: Locale | eff) String
-format = (pure <<<) <<< runFn2 format_
+format = (pure <<< _) <<< runFn2 format_
 
 -- | Format according to ISO-8601, respecting the user's locale.
 formatISO8601 :: forall eff. Moment -> Eff (locale :: Locale | eff) String
