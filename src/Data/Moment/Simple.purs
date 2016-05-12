@@ -3,11 +3,11 @@ module Data.Moment.Simple
   ( fromDate
   , fromEpoch
   , calendar
-  , module Data.Moment.Simple.Types
   , format
   , formatUTC
   , formatISO8601
   , formatUTCISO8601
+  , module Data.Moment.Simple.Types
   ) where
 
 import Prelude

@@ -1,4 +1,7 @@
-module Data.Moment.Simple.Internal where
+module Data.Moment.Simple.Internal
+  ( isValid
+  , clone
+  ) where
 
 import Data.Moment.Simple.Types (Moment())
 
