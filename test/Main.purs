@@ -8,12 +8,11 @@ import Test.Unit.Console (TESTOUTPUT)
 import Test.Unit.Main (runTest)
 
 import Global (infinity)
-import Data.Date (Now, now)
-import Data.Date.Locale (Locale)
+import Control.Monad.Eff.Now (now, NOW)
+import Data.JSDate (LOCALE)
 import Data.String (contains)
-import Data.Maybe (isJust, isNothing)
-import Data.Maybe.Unsafe (fromJust)
-import Data.Time (Milliseconds(Milliseconds))
+import Data.Maybe (isJust, isNothing, fromJust)
+import Data.Time.Duration (Milliseconds(Milliseconds))
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Class (liftEff)
 
@@ -21,8 +20,8 @@ import Data.Moment.Simple as M
 import Data.Moment.Simple.Relative as MR
 import Data.Moment.Simple.Internal as MI
 
-main :: forall eff. Eff ( now :: Now
-                        , locale :: Locale
+main :: forall eff. Eff ( now :: NOW
+                        , locale :: LOCALE
                         , console :: CONSOLE
                         , testOutput :: TESTOUTPUT
                         | eff ) Unit
