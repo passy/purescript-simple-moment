@@ -1,5 +1,7 @@
 # purescript-simple-moment
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/passy/purescript-simple-moment.svg)](https://greenkeeper.io/)
+
 [![Latest release](http://img.shields.io/bower/v/purescript-simple-moment.svg)](https://github.com/passy/purescript-simple-moment/releases)
 [![Build Status](https://travis-ci.org/passy/purescript-simple-moment.svg?branch=master)](https://travis-ci.org/passy/purescript-simple-moment)
 
