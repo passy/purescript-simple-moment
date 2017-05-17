@@ -6,8 +6,8 @@
   "license": "Apache-2",
   "devDependencies": {
     "moment": "^2.10.6",
-    "pulp": "^8.1.0",
-    "purescript": "0.8.6-rc.1",
+    "pulp": "^11.0.0",
+    "purescript": "0.11.4",
     "rimraf": "^2.4.1"
   }
 }
