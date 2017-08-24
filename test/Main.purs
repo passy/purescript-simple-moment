@@ -10,11 +10,14 @@ import Test.Unit.Main (runTest)
 import Global (infinity)
 import Control.Monad.Eff.Now (now, NOW)
 import Data.JSDate (LOCALE)
-import Data.String (contains)
+import Data.String (contains, Pattern(Pattern))
 import Data.Maybe (isJust, isNothing, fromJust)
 import Data.Time.Duration (Milliseconds(Milliseconds))
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Class (liftEff)
+import Data.DateTime.Instant (toDateTime)
+
+import Data.DateTime as DT
 
 import Data.Moment.Simple as M
 import Data.Moment.Simple.Relative as MR
@@ -26,7 +29,7 @@ main :: forall eff. Eff ( now :: NOW
                         , testOutput :: TESTOUTPUT
                         | eff ) Unit
 main = do
-  now' <- now
+  now' <- DT.date <<< toDateTime <$> now
   runTest $ do
     suite "basics" do
       test "validity" do
@@ -37,11 +40,11 @@ main = do
     suite "relative" do
       test "fromNow" do
         timeStr <- liftEff $ MR.fromNow $ M.fromDate now'
-        Assert.assert "fromNow contains ago" $ "ago" `contains` timeStr
+        Assert.assert "fromNow contains ago" $ Pattern "ago" `contains` timeStr
 
       test "fromNow'" do
         timeStr <- liftEff $ MR.fromNow' $ M.fromDate now'
-        Assert.assertFalse "fromNow' doesn't contain ago" $ "ago" `contains` timeStr
+        Assert.assertFalse "fromNow' doesn't contain ago" $ Pattern "ago" `contains` timeStr
 
     test "format" do
       let d = fromJust $ M.fromEpoch $ Milliseconds 0.0

@@ -39,6 +39,7 @@
     "purescript-debug": "~3.0.0",
     "purescript-globals": "~3.0.0",
     "purescript-strings": "~3.3.1",
-    "purescript-test-unit": "~12.0.0"
+    "purescript-test-unit": "~12.0.0",
+    "purescript-psci-support": "^3.0.0"
   }
 }
