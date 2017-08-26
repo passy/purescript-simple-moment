@@ -1,7 +1,7 @@
 -- | A simple PureScript wrapper around moment.js
 module Data.Moment.Simple
   ( fromDate
-  , fromEpoch
+  , fromInstant
   , calendar
   , format
   , formatUTC
@@ -19,7 +19,8 @@ import Control.Monad.Eff.Now (NOW)
 import Data.JSDate (LOCALE)
 import Data.Function.Uncurried (Fn2(), runFn2)
 import Data.Maybe (Maybe())
-import Data.Time.Duration (Milliseconds(..))
+import Data.Time.Duration (Milliseconds)
+import Data.DateTime.Instant (Instant, unInstant)
 
 import Data.Moment.Simple.Internal (isValid, clone)
 import Data.Moment.Simple.Types (Moment())
@@ -30,13 +31,13 @@ foreign import fromDate :: Date -> Moment
 -- | Turn a Moment date into a human-readable string, e.g. "Today, 9:30pm"
 foreign import calendar :: forall eff. Moment -> Eff (now :: NOW, locale :: LOCALE | eff) String
 
-foreign import fromEpoch_ :: Number -> Moment
+foreign import fromEpoch_ :: Milliseconds -> Moment
 
 -- | Construct a Moment object from the milliseconds since
 -- | 1970-01-01 00:00:00.000. If the timestamp is invalid, Nothing is returned.
-fromEpoch :: Milliseconds -> Maybe Moment
-fromEpoch (Milliseconds i) = do
-  let m = fromEpoch_ i
+fromInstant :: Instant -> Maybe Moment
+fromInstant instant = do
+  let m = fromEpoch_ (unInstant instant)
   guard $ isValid m
   pure m
 
