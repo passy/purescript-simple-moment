@@ -6,19 +6,16 @@ module Data.Moment.Simple.Relative
 
 import Prelude
 
-import Control.Monad.Eff (Eff())
-import Data.Date (Now())
-import Data.Date.Locale (Locale())
-import Data.Function (Fn2(), runFn2)
+import Effect (Effect())
+import Data.Function.Uncurried (Fn2(), runFn2)
 import Data.Moment.Simple.Types (Moment())
 
-foreign import fromNow_ :: forall eff.
-  Fn2 Moment Boolean (Eff (now :: Now, locale :: Locale | eff) String)
+foreign import fromNow_ :: Fn2 Moment Boolean (Effect String)
 
 -- | Display the time as relative time with an "ago" suffix.
-fromNow :: forall eff. Moment -> Eff (now :: Now, locale :: Locale | eff) String
+fromNow :: Moment -> Effect String
 fromNow m = runFn2 fromNow_ m false
 
 -- | Display the time as relative time *without* an "ago" suffix.
-fromNow' :: forall eff. Moment -> Eff (now :: Now, locale :: Locale | eff) String
+fromNow' :: Moment -> Effect String
 fromNow' m = runFn2 fromNow_ m true
