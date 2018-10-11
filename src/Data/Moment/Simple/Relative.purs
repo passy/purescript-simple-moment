@@ -4,8 +4,6 @@ module Data.Moment.Simple.Relative
   , fromNow'
   ) where
 
-import Prelude
-
 import Effect (Effect())
 import Data.Function.Uncurried (Fn2(), runFn2)
 import Data.Moment.Simple.Types (Moment())
