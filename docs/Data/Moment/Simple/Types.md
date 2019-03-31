@@ -3,7 +3,7 @@
 #### `Moment`
 
 ``` purescript
-data Moment :: *
+data Moment :: Type
 ```
 
 

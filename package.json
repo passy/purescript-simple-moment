@@ -7,7 +7,8 @@
   "devDependencies": {
     "moment": "^2.10.6",
     "pulp": "^12.3.0",
-    "purescript": "0.12.0",
+    "purescript": "0.12.3",
+    "request": "^2.88.0",
     "rimraf": "^2.4.1"
   }
 }
